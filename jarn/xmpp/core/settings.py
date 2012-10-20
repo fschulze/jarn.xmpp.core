@@ -18,7 +18,7 @@ class XMPPUsers(object):
     def getUserJID(self, user_id):
         registry = getUtility(IRegistry)
         xmpp_domain = registry['jarn.xmpp.xmppDomain']
-        return JID("%s@%s" % (user_id, xmpp_domain))
+        return JID("%s@%s" % (user_id.replace('@', '_at_'), xmpp_domain))
 
     def getUserPassword(self, user_id):
         pass_storage = getUtility(IXMPPPasswordStorage)
